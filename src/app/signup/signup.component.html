@@ -1,19 +1,116 @@
 <div class="border-[1px] shadow-lg rounded p-5 border-solid border-[#aaa]">
-    <h1 class="text-[2pc] font-bold">signUp</h1>
-    <div>
-        <form>
-            <p class="flex">
-                <input type="text" placeholder="FirstName" class="w-full mx-1 border-[1px] border-solid border-[#eee] p-2 rounded my-3">
-                <input type="text" placeholder="LastName" class="w-full border-[1px] border-solid border-[#eee] p-2 rounded my-3">
-            </p>
-            <p class="flex">
-                <input type="text" placeholder="Phone" class="w-full mx-1 border-[1px] border-solid border-[#eee] p-2 rounded">
-                <input type="text" placeholder="Address" class="w-full  border-[1px] border-solid border-[#eee] p-2 rounded">
-            </p>
-            <input type="text" placeholder="Email" class="w-full border-[1px] border-solid border-[#eee] p-2 rounded my-2">
-            <input type="password" placeholder="password" class="w-full border-[1px] border-solid border-[#eee] p-2 rounded my-2">
-            <input type="Check Password" placeholder="password" class="w-full border-[1px] border-solid border-[#eee] p-2 rounded my-2">
-            <button class="w-full bg-blue-500 text-white p-1 rounded my-3">Submit</button>
-        </form>
-    </div>
+  <h1 class="text-[2pc] font-bold">signUp</h1>
+  <div>
+    <form [formGroup]="form" (submit)="onSubmit()">
+      <p class="flex">
+        <span>
+          <input
+            type="text"
+            name="fname"
+            placeholder="FirstName"
+            class="w-full border-[1px] border-solid border-[#eee] p-2 rounded my-3 -mx-1"
+            formControlName="fname"
+          />
+          @if (form.controls.fname.invalid && form.controls.fname.untouched) {
+          <p class="text-red-400 text-[10px]">Please enter a valid firstName</p>
+          }
+        </span>
+        <span>
+          <input
+            type="text"
+            name="lname"
+            placeholder="LastName"
+            class="w-full border-[1px] border-solid border-[#eee] p-2 rounded my-3"
+            formControlName="lname"
+          />
+          @if (form.controls.lname.invalid && form.controls.lname.untouched) {
+          <p class="text-red-400 text-[10px]">
+            Please enter a valid lastName address
+          </p>
+          }
+        </span>
+      </p>
+      <p class="flex">
+        <span>
+          <input
+            type="text"
+            name="phone"
+            placeholder="Phone"
+            class="w-full border-[1px] border-solid border-[#eee] p-2 rounded -mx-1"
+            formControlName="phone"
+          />
+          @if (form.controls.phone.invalid && form.controls.phone.untouched) {
+          <p class="text-red-400 text-[10px]">
+            Please enter a valid phoneNumber
+          </p>
+          }
+        </span>
+        <span>
+          <input
+            type="text"
+            name="address"
+            placeholder="Address"
+            class="w-full border-[1px] border-solid border-[#eee] p-2 rounded"
+            formControlName="address"
+          />
+          @if (form.controls.address.invalid && form.controls.address.untouched)
+          {
+          <p class="text-red-400 text-[10px]">Please enter a valid Address</p>
+          }
+        </span>
+      </p>
+      <input
+        type="text"
+        name="email"
+        placeholder="Email"
+        class="w-full border-[1px] border-solid border-[#eee] p-2 rounded my-2"
+        formControlName="email"
+      />
+      @if (form.controls.email.invalid && form.controls.email.untouched) {
+      <p class="text-red-400 -my-2 text-[10px]">
+        Please enter a valid email address
+      </p>
+      }
+      <p class="flex">
+        <span>
+          <input
+            type="password"
+            name="password"
+            placeholder="password"
+            class="w-full border-[1px] border-solid border-[#eee] p-2 rounded my-2 -mx-1"
+            formControlName="password"
+          />
+          @if (form.controls.password.invalid &&
+          form.controls.password.untouched) {
+          <p class="text-red-400 text-[10px]">Please enter a valid Password</p>
+          }
+        </span>
+        <span>
+          <input
+            type="password"
+            name="passwordConf"
+            placeholder="passwordConf"
+            class="w-full border-[1px] border-solid border-[#eee] p-2 rounded my-2"
+            formControlName="passwordConfirmation"
+          />
+          @if (form.controls.passwordConfirmation.invalid &&
+          form.controls.passwordConfirmation.untouched) {
+          <p class="text-red-400 text-[10px]">
+            Please enter a valid passwordConf
+          </p>
+          }
+        </span>
+      </p>
+      <button class="w-full bg-blue-500 text-white p-1 rounded my-3">
+        Submit
+      </button>
+      <p class="flex justify-start my-2">
+        <a
+          routerLink="/login"
+          class="underline decoration-blue-700 text-blue-700 font-bold mx-2"
+          >Sign In</a
+        >
+      </p>
+    </form>
+  </div>
 </div>

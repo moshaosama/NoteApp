@@ -1,21 +1,45 @@
-<div class="w-full">
-    <div class="shadow-2xl container mr-auto ml-auto">
-        <div class="flex gap-9 h-20 justify-between items-center mx-10 max-w-full">
-            <div>
-                <h1 class="text-[2pc] font-bold cursor-pointer" routerLink="/">Notes</h1>
-            </div>
-            <div id="Forms">
-                <form>
-                    <input type="text" placeholder="Search Notes" class=" bg-[#eee] border-black border-solid border-2 px-2 placeholder:bg-[#eee] placeholder:p-1 w-64 h-8 rounded"/>
-                </form>
-            </div>
-            <div id="btnLogin">
-                <nav>
-                    <ul>
-                       <button class="bg-black text-white w-[5pc] h-7 rounded-full hover:bg-gray-600 transition-all duration-200" routerLink="/login">Login</button>
-                    </ul>
-                </nav>
-            </div>
-        </div>
+<div class="shadow-2xl">
+  <div class="flex h-20 justify-between items-center mx-10 max-w-full">
+    <div>
+      <h1 class="text-[2pc] font-bold cursor-pointer" routerLink="/">Notes</h1>
     </div>
+    <!-- <div id="Forms">
+            <form class="sm:w-10">
+                <input type="text" placeholder="Search Notes" class="bg-[#eee] border-black border-solid border-2 px-2 placeholder:bg-[#eee] placeholder:p-1 h-8 rounded"/>
+            </form>
+        </div> -->
+    <div id="btnLogin">
+      <nav>
+        <ul>
+          @if (!user) {
+          <button
+            class="bg-black text-white w-[5pc] h-7 rounded-full hover:bg-gray-600 transition-all duration-200"
+            routerLink="/login"
+          >
+            Login
+          </button>
+          } @else {
+          <div>
+            <div>
+              <p>
+                Hello
+                <span class="text-blue-300 font-bold">{{
+                  user.data.fName
+                }}</span>
+              </p>
+            </div>
+            <div>
+              <button
+                class="bg-black text-white w-[5pc] h-7 rounded-full hover:bg-gray-600 transition-all duration-200"
+                (click)="onLogout()"
+              >
+                logOut
+              </button>
+            </div>
+          </div>
+          }
+        </ul>
+      </nav>
+    </div>
+  </div>
 </div>
